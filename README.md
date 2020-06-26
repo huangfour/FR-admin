@@ -8,3 +8,6 @@ router
 vuex
 eslint
 unit-jest
+
+组件库使用：Ant
+数据请求库：umi-request(在Vue.config.js当中配置代理)
