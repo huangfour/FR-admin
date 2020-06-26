@@ -5,6 +5,12 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+import { Button } from 'ant-design-vue';
+Vue.use(Button)
+
+
+
+
 new Vue({
   router,
   store,
