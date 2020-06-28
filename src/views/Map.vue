@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-    import {Scene, LineLayer} from '@antv/l7';
+    import {Scene, PointLayer} from '@antv/l7';
     import {GaodeMap} from '@antv/l7-maps';
 
     export default {
@@ -16,14 +16,18 @@
                 {
                     lng1:116.345,
                     lat1:39.455,
-                    lng2:94.345,
-                    lat2:35.455,
                 },
                 {
-                    lng1:116.345,
-                    lat1:39.455,
-                    lng2:113.345,
-                    lat2:27.455,
+                    lng1:94.345,
+                    lat1:35.455,
+                },
+                {
+                    lng1:114.345,
+                    lat1:30.455,
+                },
+                {
+                    lng1:104.345,
+                    lat1:24.455,
                 },
             ]
             const scene = new Scene({
@@ -32,29 +36,23 @@
                     pitch: 0,
                     style: 'normal',
                     center: [104.435159, 34.256971],
-                    zoom: 4.444,
+                    zoom: 5.222,
                     // minZoom: 10
                 })
             });
-            const lineLayer=new LineLayer()
+            const pointLayer=new PointLayer()
             .source(data,{
                 parser:{
                     type:'json',
                     x:'lng1',
                     y:'lat1',
-                    x1:'lng2',
-                    y1:'lat2'
                 }
             })
-                .shape('arc')
+                .shape('circle')
                 .color('#cc0000')
-                .animate({
-                    duration:4,
-                    interval:0,
-                    trailLength:1
-                })
+                .size(10)
 
-            scene.addLayer(lineLayer);
+            scene.addLayer(pointLayer);
         }
     };
 </script>
