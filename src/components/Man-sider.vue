@@ -3,13 +3,13 @@
         <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1']" @click="handleClick">
             <a-sub-menu key="sub1">
                 <span slot="title"><a-icon type="appstore" /><span>首页管理</span></span>
-                <a-menu-item key="1">用户问卷管理</a-menu-item>
-
+                <a-menu-item key="1">About</a-menu-item>
+                <a-menu-item key="2">Map</a-menu-item>
+                <a-menu-item key="3">HelloWorld</a-menu-item>
             </a-sub-menu>
             <a-sub-menu key="sub2">
                 <span slot="title"><a-icon type="appstore" /><span>商品管理</span></span>
-                <a-menu-item key="2">商品分类</a-menu-item>
-                <a-menu-item key="3">商品列表</a-menu-item>
+
             </a-sub-menu>
             <a-sub-menu key="sub3">
                 <span slot="title"><a-icon type="appstore" /><span>订单管理</span></span>

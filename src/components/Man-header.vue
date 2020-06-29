@@ -17,9 +17,6 @@
         name: "man-header",
         methods:{
 
-
-
-
         }
     }
 </script>
