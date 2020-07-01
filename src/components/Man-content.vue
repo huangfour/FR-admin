@@ -22,7 +22,7 @@
                 } else if (this.selectValue === '2') {
                     this.$router.push('/map')
                 } else if (this.selectValue === '3') {
-                    this.$router.push('/helloworld')
+                    this.$router.push('/home')
                 }
             }
         },

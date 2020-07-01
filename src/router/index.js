@@ -4,7 +4,7 @@ import Man from '../components/Man.vue'
 import Map from '../views/Map.vue'
 import About from "@/views/About"
 import Login from "@/views/Login";
-import HelloWorld from "@/views/HelloWorld";
+import Home from "@/views/Home"
 
 
 Vue.use(VueRouter)
@@ -13,7 +13,7 @@ const routes = [
     // 默认显示路径
     {
         path: '/',
-        name: 'Home',
+        name: 'man',
         components: {
             //主页面的路由出口名字为index
             index: Man,
@@ -25,8 +25,8 @@ const routes = [
             path:'map',
             component:Map
         },{
-            path:'helloworld',
-            component:HelloWorld
+            path:'home',
+            component:Home
         }]
     },
     {
