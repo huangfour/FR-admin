@@ -1,13 +1,50 @@
 <template>
     <div>
-        this login
+        <a-table
+                :columns="columns"
+                :data-source="data"
+                :pagination="{ pageSize: 14 }"
+        />
     </div>
 </template>
 
 <script>
-    export default {
-        name: "Login"
+    const columns = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            width: 150,
+        },
+        {
+            title: 'Age',
+            dataIndex: 'age',
+            width: 150,
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+        },
+    ];
+
+    const data = [];
+    for (let i = 0; i < 100; i++) {
+        data.push({
+            key: i,
+            name: `Edward King ${i}`,
+            age: 32,
+            address: `London, Park Lane no. ${i}`,
+        });
     }
+
+    export default {
+        name: "Login",
+        data() {
+            return {
+                data,
+                columns,
+            };
+        },
+    };
 </script>
 
 <style scoped>
