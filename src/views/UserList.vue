@@ -41,48 +41,15 @@
                                 type: '1',
                                 title: '用户人脸',
                                 area: ['600px', '600px'],
-                                content: '<img src="'+data.recognitionUrl+'" alt="图片名">'
+                                content: '<img src="' + data.recognitionUrl + '" alt="图片名">'
 
                             });
 
                             break;
                         case 'download':
                             layer.msg('开始下载');
-                            File.downloadImageByFileUrl(data.fileUrl, data.fileName).then(res => {
-                                console.log("文件下载成功")
-                                const content = res
-                                const blob = new Blob([content])
-                                const fileName = data.fileName
-                                if ('download' in document.createElement('a')) { // 非IE下载
-                                    const elink = document.createElement('a')
-                                    elink.download = fileName
-                                    elink.style.display = 'none'
-                                    elink.href = URL.createObjectURL(blob)
-                                    document.body.appendChild(elink)
-                                    elink.click()
-                                    URL.revokeObjectURL(elink.href) // 释放URL 对象
-                                    document.body.removeChild(elink)
-                                } else { // IE10+下载
-                                    navigator.msSaveBlob(blob, fileName)
-                                }
-                            })
                             break;
                         case 'del':
-                            layer.confirm('真的删除行么', function (index) {
-                                if (data.style == 0) {
-                                    //删除文件
-                                    File.deleteFileByFileUrl(data.fileUrl).then(res => {
-                                        console.log("文件删除成功")
-                                    })
-                                } else if (data.style == 1) {
-                                    //删除图片
-                                    File.deleteImageByFileUrl(data.fileUrl).then(res => {
-                                        console.log("图片删除成功")
-                                    })
-                                }
-                                obj.del();
-                                layer.close(index);
-                            });
                             break;
                     }
                 })
