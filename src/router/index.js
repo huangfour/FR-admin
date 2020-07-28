@@ -2,11 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Man from '../components/Man.vue'
 import Map from '../views/Map.vue'
-import About from "@/views/About"
+import Console from "../views/Console";
 import Login from "@/views/Login"
 import Home from "@/views/Home"
 import FormView from "../views/FormView"
-
+import FileList from "../views/FileList";
+import UserList from "../views/UserList";
 Vue.use(VueRouter)
 
 const routes = [
@@ -20,8 +21,8 @@ const routes = [
             index: Man,
         },
         children: [{
-            path: 'about',
-            component: About
+            path: 'console',
+            component: Console
         },{
             path:'map',
             component:Map
@@ -31,7 +32,12 @@ const routes = [
         },{
             path:'formView',
             component:FormView
-
+        },{
+            path:'fileList',
+            component:FileList
+        },{
+            path:'userList',
+            component:UserList
         }]
     },
     // 一级路由
@@ -61,5 +67,5 @@ export default router
 //     // route level code-splitting
 //     // this generates a separate chunk (about.[hash].js) for this route
 //     // which is lazy-loaded when the route is visited.
-//     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+//     component: () => import(/* webpackChunkName: "about" */ '../views/Console.vue')
 // },

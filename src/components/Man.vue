@@ -51,6 +51,7 @@
 </script>
 
 <style scoped>
+
     #components-layout-demo-custom-trigger{
         height: 700px;
     }
@@ -68,7 +69,7 @@
 
     #components-layout-demo-custom-trigger .logo {
         height: 32px;
-        background: rgba(255, 255, 255, 0.2);
+        background: #fff;
         margin: 16px;
     }
 </style>

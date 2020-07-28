@@ -1,19 +1,38 @@
 <template>
     <div id="app">
-        <!--      <router-link to="/">Home</router-link> |-->
-        <!--      <router-link to="/about">About</router-link>|-->
-        <!--      <router-link to="/map">Map</router-link>-->
-        <router-view name="index"/>
-<!--        <man></man>-->
+        <div v-show="!isLogin">
+            <login></login>
+        </div>
+        <div v-show="isLogin">
+            <router-view name="index"/>
+        </div>
+
     </div>
 </template>
 <script>
-    // import man from './components/Man'
+    import Login from "./views/Login";
+
     export default {
         name: "app",
         components: {
-            // man
-        }
+            login: Login
+        },
+        data() {
+            return {}
+        },
+        computed: {
+            isLogin() {
+                return this.$store.getters.isLogin;
+            }
+
+        },
+        methods: {
+            login: function () {
+                this.$store.dispatch('login')
+                alert("login")
+            },
+        },
+
     }
 </script>
 <style>

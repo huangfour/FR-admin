@@ -1,52 +1,110 @@
 <template>
-    <div>
-        <a-table
-                :columns="columns"
-                :data-source="data"
-                :pagination="{ pageSize: 14 }"
-        />
+    <div class="loginShow">
+        <a-form
+                id="components-form-demo-normal-login"
+                :form="form"
+                class="login-form"
+                @submit="handleSubmit"
+        >
+            <a-form-item>
+                <a-input
+                        v-decorator="[
+          'userName',
+          { rules: [{ required: true, message: 'Please input your username!' }] },
+        ]"
+                        placeholder="Username"
+                >
+                    <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)"/>
+                </a-input>
+            </a-form-item>
+            <a-form-item>
+                <a-input
+                        v-decorator="[
+          'password',
+          { rules: [{ required: true, message: 'Please input your Password!' }] },
+        ]"
+                        type="password"
+                        placeholder="Password"
+                >
+                    <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)"/>
+                </a-input>
+            </a-form-item>
+            <a-form-item>
+                <a-checkbox
+                        v-decorator="[
+          'remember',
+          {
+            valuePropName: 'checked',
+            initialValue: true,
+          },
+        ]"
+                >
+                    Remember me
+                </a-checkbox>
+                <a class="login-form-forgot" href="">
+                    Forgot password
+                </a>
+                <a-button type="primary" html-type="submit" class="login-form-button">
+                    Log in
+                </a-button>
+                Or
+                <a href="">
+                    register now!
+                </a>
+            </a-form-item>
+        </a-form>
     </div>
+
 </template>
 
 <script>
-    const columns = [
-        {
-            title: 'Name',
-            dataIndex: 'name',
-            width: 150,
-        },
-        {
-            title: 'Age',
-            dataIndex: 'age',
-            width: 150,
-        },
-        {
-            title: 'Address',
-            dataIndex: 'address',
-        },
-    ];
-
-    const data = [];
-    for (let i = 0; i < 100; i++) {
-        data.push({
-            key: i,
-            name: `Edward King ${i}`,
-            age: 32,
-            address: `London, Park Lane no. ${i}`,
-        });
-    }
-
+    import User from "../request/User";
+    let userInfo;
     export default {
         name: "Login",
-        data() {
-            return {
-                data,
-                columns,
-            };
+        beforeCreate() {
+            this.form = this.$form.createForm(this, {name: 'normal_login'});
+        },
+        methods: {
+            handleSubmit(e) {
+                e.preventDefault();
+                this.form.validateFields((err, values) => {
+                    if (!err) {
+                        console.log('Received values of form: ', values);
+                        userInfo= {};
+                        userInfo.username = values.userName
+                        userInfo.password = values.password
+                        console.log(userInfo)
+                        User.login(userInfo).then(res => {
+                            this.$store.dispatch('loginSuccess')
+                        })
+                    }
+                });
+            },
         },
     };
 </script>
+<style>
+    .loginShow {
+        width: 400px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
 
-<style scoped>
 
+    }
+
+    #components-form-demo-normal-login .login-form {
+        max-width: 300px;
+    }
+
+    #components-form-demo-normal-login .login-form-forgot {
+        float: right;
+    }
+
+    #components-form-demo-normal-login .login-form-button {
+        width: 100%;
+    }
 </style>
+

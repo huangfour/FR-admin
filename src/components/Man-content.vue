@@ -18,11 +18,11 @@
             //监听左侧点击，进行跳转
             selectValue: function () {
                 if (this.selectValue === '1') {
-                    this.$router.push('/about')
+                    this.$router.push('/console')
                 } else if (this.selectValue === '2') {
-                    this.$router.push('/map')
+                    this.$router.push('/fileList')
                 } else if (this.selectValue === '3') {
-                    this.$router.push('/formView')
+                    this.$router.push('/userList')
                 }
             }
         },
